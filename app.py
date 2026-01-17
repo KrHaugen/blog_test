@@ -1,11 +1,11 @@
-from flask import Flask, render_template, url_for, request, redirect, flash, send_file
+from flask import Flask, render_template, url_for, request, redirect, flash, send_file, abort
 import markdown
-
+import requests
 
 class Post:
-    def __init__(self, title, content):
+    def __init__(self, title, url):
         self.title = title
-        self.content = content
+        self.url = url
        
 
 blog_posts = [Post('Refleksjoner rundt arbeidsmarkedet','https://raw.githubusercontent.com/KrHaugen/markdowns/refs/heads/main/refleksjoner_rundt_arbeidsmarkedet'),
@@ -19,19 +19,14 @@ def index():
     return render_template('index.html')
 
 
-
 @app.route('/blog/<int:number>')
 def blog(number):
-    if number < 1 or number > len(posts):
-        abort(404, "This Post doesn't exist") 
+    if number < 1 or number > len(blog_posts):
+       abort(404, "This Post doesn't exist") 
 
     data = blog_posts[number -1]    
-    data.content = markdown.markdown(request.get(blog_posts[0]['url']))
-    return render_template_string('''
-{{ item.title }}<br/>
-{{ item.content }}<br/>
-''', item=data)
-
+    data.content = markdown.markdown(requests.get(blog_posts[number -1].url).text)
+    return render_template('post.html', item=data)
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5001, debug=True)
