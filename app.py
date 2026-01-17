@@ -1,15 +1,19 @@
 from flask import Flask, render_template, url_for, request, redirect, flash, send_file, abort
 import markdown
 import requests
+import itertools
 
 class Post:
+    id_iter = itertools.count()
     def __init__(self, title, url):
         self.title = title
         self.url = url
+        self.id_iter = next(Post.id_iter) +1
        
 
 blog_posts = [Post('Refleksjoner rundt arbeidsmarkedet','https://raw.githubusercontent.com/KrHaugen/markdowns/refs/heads/main/refleksjoner_rundt_arbeidsmarkedet'),
               Post('Ulykker til sjøs','https://raw.githubusercontent.com/KrHaugen/markdowns/refs/heads/main/ulykker_til_sj%C3%B8s')]
+
 
 app = Flask(__name__)
 
@@ -18,9 +22,13 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+@app.route('/blog/')
+def blog():
+    posts = blog_posts
+    return render_template('blog.html', posts=posts)
 
 @app.route('/blog/<int:number>')
-def blog(number):
+def post(number):
     if number < 1 or number > len(blog_posts):
        abort(404, "This Post doesn't exist") 
 
