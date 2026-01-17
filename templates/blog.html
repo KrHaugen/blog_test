@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block container %}
+<div class="container">
+    <h1>{% block title %} Blog {% endblock %}</h1>
+    {% for post in posts %}
+        <a href="{{ url_for('post', post_id=post['id']) }}">
+            <h2>{{ post['title'] }}</h2>
+        </a>
+        <a>Tags: {{post['tags']}}</a> <br>
+        <span class="badge badge-dark">{{ post['created'] }}</span>
+        <hr>
+</div> 
+    {% endfor %}
+{% endblock %}

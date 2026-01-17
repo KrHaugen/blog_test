@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+KrHaugen
+{% endblock %}
+
+{% block container %}
+
+<h1>Om meg</h1>
+
+<div class="container-fluid main-container">
+    <p>Hei! Jeg er en statsviter, teknologientusiast og open source fan som liker å leke med
+    tall. Jeg pussler med både hardware, software og
+    statistikkverktøy.</p>
+    <p>Jeg har jobbet på universitetet som universitetslektor og undervist studenter i samfunnsvitenskap i kvantitative metoder. I senere tid har jeg drevet med utvinning av digital valuta, også kalt krypto. Du kan lese mer om det i <a href="{{url_for('blockchain')}}">blockchain</a>.</p>
+    <p>På denne siden vil du finne <a href={{url_for('CV')}}>CV</a>, litt informasjon om hva jeg har
+    drevet med og en blog. Tanken er å vise frem konsepter og arbeider i <a href="{{url_for('blog')}}">bloggen</a>.</p>   
+    <p>Har du behov for å ta kontakt? Du finner kontaktinfo <a href="{{url_for('contact')}}">her</a>.</p>
+</div>
+
+<img src="/static/images/profilbilde3.jpg" width="100%" height="80%" class="center2">
+
+{%endblock%}

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+        body{
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            background-image: url( {{ url_for('static', filename='images/bg_photo_gray.jpg') }} );
+            }
+	h1 {
+    		color: darkslategray;
+    		text-align: center;
+    		padding: 10px;
+    		background-color: darkgrey;
+		}	
+	.container{
+    		background-color: darkgrey;
+    		color:black;
+		}
+	.container-photo{
+    		background-color: darkgrey;
+    		color:black;
+    		max-width: 200px;
+		}
+
+	.center2 {
+    		display:flex;
+    		margin-left: auto;
+    		margin-right: auto;
+    		width: 40%;
+  		}
+	p.ex1 { 
+    		padding-top: 10%;
+  		}
+	.center {
+    		display: block;
+    		margin-left: auto;
+    		margin-right: auto;
+    		width: 50%;
+  		}
+	.navbar{
+    		position: relative;
+    		top: 0;
+    		z-index: 1030; /* to prevent the navbar getting covered up by other content */
+ 		}	
+    </style>
+    <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <title>{% block title %} {% endblock %}</title>
+      </head>
+      <body>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <nav class="navbar navbar-expand navbar-dark bg-dark">
+            <span class="navbar-brand mb-0 h1"><a href="{{ url_for('index')}}"><img src='/static/images/logo.jpg' width="80"></a></span>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('about')}}">Om meg</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('blog')}}">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('CV')}}">CV</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('blockchain')}}">Blockchain</a>
+                    </li>
+                </ul>
+            </div>
+            {% for message in get_flashed_messages() %}
+            <div class="alert alert-danger">{{ message }}</div>
+            {% endfor %}
+        </nav>
+        <div class="container">
+            {% block container %} {% endblock %}      
+        </div>
+        {% block content%} {% endblock%}
+        <!-- ... (Bootstrap JavaScript links) ... -->
+        
+      </body>
+</html>

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Blockchain
+{% endblock %}
+
+{% block container %}
+<h1>Blockchain</h1>
+
+Jeg har over 3 års erfaring med deltakelse i blockchain og crypto. Jeg har deltatt igjennom mining, drifting av noder og kjøp og salg. 
+
+<h3>Noder</h3>
+Noder er servere som vedlikeholder selve blockchainen til prosjektet. Uten nodene kan ikke blockchainen fungere. Det er noen forskjellige typer noder. I tradisjonelt proof of work (PoW) så har ikke nodene noen annen rolle enn å holde på, og synce infoen som blockchainen holder, og annonsere transaksjoner til nettverket. Selve valideringen av transaksjonene blir gjort av minere (i praksis blir dette ofte gjort av miningpools). I proof of stake (PoS) så er det ikke minere, og det er nodene som gjør valideringen av transaksjoner. Du må også ha en stake (låse verdier) for å kunne være med å validere for nettverket. For å sikre nettverket får du en del av block rewardsene, slik som minere gjør i PoW. Det er også PoW prosjekter med smartnoder, der minere lager blokkene og node-operatørene validerer blokkene. I denne modellen deles block rewardsene mellom minere og node operatører.
+<br>
+Det er altså økonomiske insentiver for å være en nodeoperatør for en del prosjekter.
+<br>
+Jeg har erfaring med å drifte noder for forskjellige prosjekter som Flux og Neoxa. Jeg har både hostet selv, og jeg har erfaring med å bruke hosting-tjenester fra andre. Jeg har også hostet noder for andre prosjekter uten økonomiske insentiver for å drive nodene. Jeg har for eksempel vært med på å utarbeide dokumentasjonen for å kjøre noder i Docker for Radiant.
+
+<br>
+
+<h3>Mining</h3>
+Minere er helt sentral i PoW prosjekter som f.eks Bitcoin. Minere sikrer hele blockchainen, og driver den fremover. 
+
+<br>
+Jeg startet å mine med grafikkkort (GPUer) i det siste bullrunnet til Etherium. Jeg har gjort meg en del erfaringer i GPU mining, men har også vært med på harddrive mining gjennom Chia. Jeg har stort sett minet selv, men har også fått erfaringer med å kjøpe og hoste utstyr hos andre providers.
+<br>
+I forbindelse med all aktiviteten jeg har vært med på i blockchain så har jeg jobbet med nettverk, network attached storage (NAS), VMs og bash scripting.
+
+<br>
+
+<img src="/static/images/rig1.jpg" width="200" class="center">
+
+<br>
+Mining kan være veldig profitabelt i perioder, men når kryptovinteren kommer så handler alt om kontrollere og minimere kostnadene. Strøm er den desidert største løpende kostnaden, og nøkkelen til å overleve vinteren ligger i energieffektivitet. Mer effektivt produksjonsutstyr har lavere driftskostnader og kan holde produksjonen i gang lengre.
+
+For å effektivisere driften har jeg laget programmer som estimerer profit av å mine basert på strømkostnaden, prisen på valutaen som mines og difficulty. Infoen hentes ut av APIer, og kalkulasjonene gjøres lokalt. Pris hentes ut direkte fra kryptobørs, og difficulty fra en nettverksnode (så lenge det er en tilgjengelig åpen node).
+Jeg har også laget bots i python for kjøp og salg av digital valuta.
+
+<br>
+<br>
+{% endblock %}

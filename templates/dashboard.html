@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block container %}
+    <h1>{% block title %} Dashboard {% endblock %}</h1>
+
+    
+    <a href="{{url_for('create')}}">
+        <h2>New post</h2>
+    </a>
+    <hr>
+    <br>
+
+    {% for post in posts %}
+        <a href="{{ url_for('post', post_id=post['id']) }}">
+            <h2>{{ post['title'] }}</h2>
+        </a>
+        <span class="badge badge-primary">{{ post['created'] }}</span>
+        <a href="{{ url_for('edit', id=post['id']) }}">
+            <span class="badge badge-warning">Edit</span>
+        </a>
+        <hr>
+    {% endfor %}
+{% endblock %}
